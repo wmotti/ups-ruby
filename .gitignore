@@ -21,3 +21,4 @@ doc/
 *.komodoproject
 test.rb
 *.sublime-*
+tags
