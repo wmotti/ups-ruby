@@ -14,7 +14,11 @@ module UPS
                     :label_html_image,
                     :form_graphic_image,
                     :form_graphic_extension,
-                    :tracking_number
+                    :tracking_number,
+                    :label_url,
+                    :local_language_label_url,
+                    :receipt_url,
+                    :local_language_receipt_url
 
       def value(value)
         initialize_document_root_paths
@@ -22,6 +26,10 @@ module UPS
         parse_document_data(value, 'label')
         parse_document_data(value, 'form')
         parse_tracking_number(value)
+        parse_label_url(value)
+        parse_local_language_label_url(value)
+        parse_receipt_url(value)
+        parse_local_language_receipt_url(value)
 
         super
       end
@@ -68,6 +76,26 @@ module UPS
       def parse_tracking_number(value)
         return unless switch_active?(:ShipmentIdentificationNumber)
         self.tracking_number = value.as_s
+      end
+
+      def parse_label_url(value)
+        return unless switch_active?(:LabelURL)
+        self.label_url = value.as_s
+      end
+
+      def parse_local_language_label_url(value)
+        return unless switch_active?(:LocalLanguageLabelURL)
+        self.local_language_label_url = value.as_s
+      end
+
+      def parse_receipt_url(value)
+        return unless switch_active?(:ReceiptURL)
+        self.receipt_url = value.as_s
+      end
+
+      def parse_local_language_receipt_url(value)
+        return unless switch_active?(:LocalLanguageReceiptURL)
+        self.local_language_receipt_url = value.as_s
       end
 
       def base64_to_file(contents, type)
