@@ -32,13 +32,21 @@ module UPS
         end
       end
 
-      # Adds a InternationalForms section to the XML document being built
+      # Adds a ShipmentServiceOptions section to the XML document being built
       # according to user inputs
       #
       # @return [void]
-      def add_international_invoice(opts = {})
+      def add_shipment_service_options(opts = {})
         shipment_root << Element.new('ShipmentServiceOptions').tap do |shipment_service_options|
-          shipment_service_options << InternationalInvoiceBuilder.new('InternationalForms', opts).to_xml
+          if opts[:international_invoice]
+            international_invoice_builder = InternationalInvoiceBuilder.new('InternationalForms', opts[:international_invoice])
+            shipment_service_options << international_invoice_builder.to_xml
+          end
+          if opts.fetch(:label_links, 'false').true?
+            shipment_service_options << Element.new('LabelDelivery').tap do |label_delivery|
+              label_delivery << Element.new('LabelLinksIndicator')
+            end
+          end
         end
       end
 
