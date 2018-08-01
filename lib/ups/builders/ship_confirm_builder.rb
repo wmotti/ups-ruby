@@ -42,7 +42,7 @@ module UPS
             international_invoice_builder = InternationalInvoiceBuilder.new('InternationalForms', opts[:international_invoice])
             shipment_service_options << international_invoice_builder.to_xml
           end
-          if opts.fetch(:label_links, 'false').true?
+          if opts.fetch(:label_links, 'false') == true
             shipment_service_options << Element.new('LabelDelivery').tap do |label_delivery|
               label_delivery << Element.new('LabelLinksIndicator')
             end
