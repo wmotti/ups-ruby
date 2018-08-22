@@ -13,10 +13,10 @@ module UPS
 
       # Initializes a new {ShipConfirmBuilder} object
       #
-      def initialize
+      def initialize(validate = true)
         super 'ShipmentConfirmRequest'
 
-        add_request 'ShipConfirm', 'validate'
+        add_request 'ShipConfirm', validate
       end
 
       # Adds a LabelSpecification section to the XML document being built
