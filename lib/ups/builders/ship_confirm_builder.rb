@@ -55,6 +55,19 @@ module UPS
                                           service_description)
       end
 
+      # Adds a ReturnService section to the XML document being built
+      #
+      # @param [String] service_code The ReturnService code for the choosen Shipping
+      #   method
+      # @param [optional, String] service_description A description for the
+      #   choosen Shipping Method
+      # @return [void]
+      def add_return_service(return_service_code, service_description = '')
+        shipment_root << code_description('ReturnService',
+                                          return_service_code,
+                                          return_service_description)
+      end
+
       # Adds Description to XML document being built
       #
       # @param [String] description The description for goods being sent
