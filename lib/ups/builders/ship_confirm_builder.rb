@@ -13,9 +13,10 @@ module UPS
 
       # Initializes a new {ShipConfirmBuilder} object
       #
-      def initialize(validate = true)
+      def initialize(street_level_address_validation = true)
         super 'ShipmentConfirmRequest'
 
+        validate = street_level_address_validation ? 'validate' : 'nonvalidate'
         add_request 'ShipConfirm', validate
       end
 
