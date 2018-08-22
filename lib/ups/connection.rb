@@ -68,9 +68,9 @@ module UPS
     #   {Builders::ShipConfirmBuilder} object to use
     # @yield [ship_confirm_builder] A ShipConfirmBuilder object for configuring
     #   the shipment information sent
-    def ship(confirm_builder = nil)
+    def ship(validate = true, confirm_builder = nil)
       if confirm_builder.nil? && block_given?
-        confirm_builder = Builders::ShipConfirmBuilder.new
+        confirm_builder = Builders::ShipConfirmBuilder.new(validate)
         yield confirm_builder
       end
 
