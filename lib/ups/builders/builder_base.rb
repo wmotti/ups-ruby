@@ -157,8 +157,9 @@ module UPS
       # @return [void]
       def add_payment_information(ship_number)
         shipment_root << Element.new('PaymentInformation').tap do |payment|
-          payment << Element.new('Prepaid').tap do |prepaid|
-            prepaid << Element.new('BillShipper').tap do |bill_shipper|
+          payment << Element.new('ShipmentCharge').tap do |shipment_charge|
+            shipment_charge << element_with_value('Type', '01')
+            shipment_charge << Element.new('BillShipper').tap do |bill_shipper|
               bill_shipper << element_with_value('AccountNumber', ship_number)
             end
           end
