@@ -165,6 +165,14 @@ module UPS
         end
       end
 
+      # Adds a ItemizedPaymentInformation section to the XML document being built
+      #
+      # @param [String] opts A Hash of data to build the requested section<Paste>
+      # @return [void]
+      def add_itemized_payment_information(opts = {})
+        shipment_root << ItemizedPaymentInformationBuilder.new('ItemizedPaymentInformation', opts).to_xml
+      end
+
       # Adds a RateInformation/NegotiatedRatesIndicator section to the XML
       # document being built
       #
