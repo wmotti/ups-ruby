@@ -41,7 +41,7 @@ module UPS
             Element.new('BillThirdParty').tap do |bill_third_party|
               bill_third_party << Element.new("bill_#{opts[:billed_actor]}".split('_').map{|e| e.capitalize}.join).tap do |bill_third_party_actor|
                 bill_third_party_actor << element_with_value('AccountNumber', opts[:billed_account_number])
-                Element.new('ThirdParty').tap do |third_party|
+                bill_third_party_actor << Element.new('ThirdParty').tap do |third_party|
                   third_party << Element.new('Address').tap do |address|
                     address << element_with_value('PostalCode', opts[:postal_code]) if opts[:postal_code]
                     address << element_with_value('CountryCode', opts[:country_code])
