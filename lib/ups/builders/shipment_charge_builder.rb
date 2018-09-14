@@ -34,29 +34,29 @@ module UPS
       def to_xml
         Element.new(name).tap do |shipment_charge|
           shipment_charge << type
-          shipment_charge << case opts[:billed_actor]
+          shipment_charge << case opts[:billing_actor]
           when :shipper
             Element.new('BillShipper').tap do |bill_shipper|
-              bill_shipper << element_with_value('AccountNumber', opts[:billed_account_number])
+              bill_shipper << element_with_value('AccountNumber', opts[:billing_account_number])
             end
           when :receiver
             Element.new('BillReceiver').tap do |bill_receiver|
-              bill_receiver << element_with_value('AccountNumber', opts[:billed_account_number])
+              bill_receiver << element_with_value('AccountNumber', opts[:billing_account_number])
             end
           when :third_party_shipper, :third_party_consignee
             Element.new('BillThirdParty').tap do |bill_third_party|
-              bill_third_party << Element.new("bill_#{opts[:billed_actor]}".split('_').map{|e| e.capitalize}.join).tap do |bill_third_party_actor|
-                bill_third_party_actor << element_with_value('AccountNumber', opts[:billed_account_number])
+              bill_third_party << Element.new("bill_#{opts[:billing_actor]}".split('_').map{|e| e.capitalize}.join).tap do |bill_third_party_actor|
+                bill_third_party_actor << element_with_value('AccountNumber', opts[:billing_account_number])
                 bill_third_party_actor << Element.new('ThirdParty').tap do |third_party|
                   third_party << Element.new('Address').tap do |address|
-                    address << element_with_value('PostalCode', opts[:postal_code]) if opts[:postal_code]
-                    address << element_with_value('CountryCode', opts[:country_code])
+                    address << element_with_value('PostalCode', opts[:billing_postal_code]) if opts[:billing_postal_code]
+                    address << element_with_value('CountryCode', opts[:billing_country_code])
                   end
                 end
               end
             end
           when :consignee_billed
-            Element.new('ConsigneeBilled')
+            Element.new 'ConsigneeBilled'
           end
         end
       end
