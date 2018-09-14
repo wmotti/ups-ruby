@@ -19,7 +19,13 @@ module UPS
       end
 
       def type
-        element_with_value('Type', opts[:type])
+        type = case opts[:type]
+               when :transportation
+                 '01'
+               when :duties_and_taxes
+                 '02'
+               end
+        element_with_value 'Type', type
       end
 
       # Returns an XML representation of the current object
