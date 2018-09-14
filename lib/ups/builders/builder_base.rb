@@ -165,6 +165,7 @@ module UPS
         end
       end
 
+      # DEPRRECATED
       def add_free_domicile_payment_information(ship_number)
         shipment_root << Element.new('ItemizedPaymentInformation').tap do |payment|
           payment << Element.new('ShipmentCharge').tap do |shipment_charge|
@@ -180,6 +181,14 @@ module UPS
             end
           end
         end
+      end
+
+      # Adds a ItemizedPaymentInformation section to the XML document being built
+      #
+      # @param [String] opts A Hash of data to build the requested section<Paste>
+      # @return [void]
+      def add_itemized_payment_information(opts = {})
+        shipment_root << ItemizedPaymentInformationBuilder.new('ItemizedPaymentInformation', opts).to_xml
       end
 
       # Adds a RateInformation/NegotiatedRatesIndicator section to the XML
