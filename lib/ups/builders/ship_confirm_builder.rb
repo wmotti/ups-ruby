@@ -104,9 +104,9 @@ module UPS
       end
 
       def reference_number(code, value)
-        multi_valued('ReferenceNumber',
-                     'Code' => reference_number_code(code),
-                     'Value' => value.to_s)
+        params = { 'Value' => value.to_s }
+        params.merge!({ 'Code' => reference_number_code(code) }) if code
+        multi_valued 'ReferenceNumber', params
       end
 
       def reference_number_code(code)
