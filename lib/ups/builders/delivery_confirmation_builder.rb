@@ -20,8 +20,8 @@ module UPS
 
       def dcis_type(type)
         type_code = {
-          signature_required:       '1',
-          adult_signature_required: '2'
+          'signature required'       => '1',
+          'adult signature required' => '2'
         }.fetch type
         element_with_value 'DCISType', type_code
       end
