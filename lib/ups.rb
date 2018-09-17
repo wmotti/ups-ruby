@@ -42,5 +42,6 @@ module UPS
     autoload :ShipperBuilder,                     'ups/builders/shipper_builder'
     autoload :ItemizedPaymentInformationBuilder,  'ups/builders/itemized_payment_information_builder'
     autoload :ShipmentChargeBuilder,              'ups/builders/shipment_charge_builder'
+    autoload :DeliveryConfirmationBuilder,        'ups/builders/delivery_confirmation_builder'
   end
 end
