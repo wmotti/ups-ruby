@@ -8,10 +8,19 @@ module UPS
 
   autoload :Data,                  'ups/data'
   module Data
-    autoload :US_STATES,           'ups/data/us_states'
-    autoload :CANADIAN_STATES,     'ups/data/canadian_states'
-    autoload :IE_COUNTIES,         'ups/data/ie_counties'
-    autoload :IE_COUNTY_PREFIXES,  'ups/data/ie_county_prefixes'
+    autoload :US_STATES,                 'ups/data/us_states'
+    autoload :CANADIAN_STATES,           'ups/data/canadian_states'
+    autoload :IE_COUNTIES,               'ups/data/ie_counties'
+    autoload :IE_COUNTY_PREFIXES,        'ups/data/ie_county_prefixes'
+    autoload :US_SERVICE_CODES,          'ups/data/service_codes'
+    autoload :CA_SERVICE_CODES,          'ups/data/service_codes'
+    autoload :CA_DOMESTIC_SERVICE_CODES, 'ups/data/service_codes'
+    autoload :EU_SERVICE_CODES,          'ups/data/service_codes'
+    autoload :MX_SERVICE_CODES,          'ups/data/service_codes'
+    autoload :PL_SERVICE_CODES,          'ups/data/service_codes'
+    autoload :PR_SERVICE_CODES,          'ups/data/service_codes'
+    autoload :OTHERS_SERVICE_CODES,      'ups/data/service_codes'
+    autoload :ALL_SERVICE_CODES,         'ups/data/service_codes'
   end
 
   module Parsers
