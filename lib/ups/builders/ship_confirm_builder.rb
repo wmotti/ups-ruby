@@ -49,10 +49,33 @@ module UPS
       # @param [optional, String] service_description A description for the
       #   choosen Shipping Method
       # @return [void]
-      def add_service(service_code, service_description = '')
+      def add_service(origin, destination, service)
         shipment_root << code_description('Service',
-                                          service_code,
-                                          service_description)
+                                          service_code(origin, destination, service),
+                                          service)
+      end
+
+      def service_code(origin, destination, service)
+        case origin
+        when 'US'
+          US_SERVICE_CODES.merge ALL_SERVICE_CODES
+        when 'CA'
+          if destination = 'CA'
+            CA_DOMESTIC_SERVICE_CODES.merge ALL_SERVICE_CODES
+          else
+            CA_SERVICE_CODES.merge ALL_SERVICE_CODES
+          end
+        when 'EU'
+          EU_SERVICE_CODES.merge ALL_SERVICE_CODES
+        when 'MX'
+          MX_SERVICE_CODES.merge ALL_SERVICE_CODES
+        when 'PL'
+          PL_SERVICE_CODES.merge ALL_SERVICE_CODES
+        when 'PR'
+          PR_SERVICE_CODES.merge ALL_SERVICE_CODES
+        else
+          OTHERS_SERVICE_CODES.merge ALL_SERVICE_CODES
+        end.fetch service
       end
 
       # Adds Description to XML document being built
