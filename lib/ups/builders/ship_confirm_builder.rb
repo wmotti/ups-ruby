@@ -58,23 +58,23 @@ module UPS
       def service_code(origin, destination, service)
         case origin
         when 'US'
-          US_SERVICE_CODES.merge ALL_SERVICE_CODES
+          UPS::Data::US_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
         when 'CA'
-          if destination = 'CA'
-            CA_DOMESTIC_SERVICE_CODES.merge ALL_SERVICE_CODES
+          if destination == 'CA'
+            UPS::Data::CA_DOMESTIC_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
           else
-            CA_SERVICE_CODES.merge ALL_SERVICE_CODES
+            UPS::Data::CA_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
           end
         when 'EU'
-          EU_SERVICE_CODES.merge ALL_SERVICE_CODES
+          UPS::Data::EU_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
         when 'MX'
-          MX_SERVICE_CODES.merge ALL_SERVICE_CODES
+          UPS::Data::MX_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
         when 'PL'
-          PL_SERVICE_CODES.merge ALL_SERVICE_CODES
+          UPS::Data::PL_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
         when 'PR'
-          PR_SERVICE_CODES.merge ALL_SERVICE_CODES
+          UPS::Data::PR_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
         else
-          OTHERS_SERVICE_CODES.merge ALL_SERVICE_CODES
+          UPS::Data::OTHERS_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
         end.fetch service
       end
 
