@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsd:schema xmlns:ups="http://www.ups.com/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="201801">
 	<xsd:include schemaLocation="IF.xsd"/>
+	<xsd:include schemaLocation="AccessRequest.xsd"/>
 	<xsd:element name="ShipmentConfirmRequest">
 		<xsd:complexType>
 			<xsd:sequence>
