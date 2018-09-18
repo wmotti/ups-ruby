@@ -58,24 +58,24 @@ module UPS
       def service_code(origin, destination, service)
         case origin
         when 'US'
-          UPS::Data::US_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+          UPS::Data::US_SERVICE_CODES
         when 'CA'
           if destination == 'CA'
-            UPS::Data::CA_DOMESTIC_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+            UPS::Data::CA_DOMESTIC_SERVICE_CODES
           else
-            UPS::Data::CA_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+            UPS::Data::CA_SERVICE_CODES
           end
         when 'EU'
-          UPS::Data::EU_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+          UPS::Data::EU_SERVICE_CODES
         when 'MX'
-          UPS::Data::MX_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+          UPS::Data::MX_SERVICE_CODES
         when 'PL'
-          UPS::Data::PL_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+          UPS::Data::PL_SERVICE_CODES
         when 'PR'
-          UPS::Data::PR_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
+          UPS::Data::PR_SERVICE_CODES
         else
-          UPS::Data::OTHERS_SERVICE_CODES.merge UPS::Data::ALL_SERVICE_CODES
-        end.fetch service
+          UPS::Data::OTHERS_SERVICE_CODES
+        end.merge!(UPS::Data::ALL_SERVICE_CODES).fetch service
       end
 
       # Adds Description to XML document being built
