@@ -7,13 +7,26 @@ module ShippingOptions
       address_line_1: '11 Wind Street',
       city: 'Swansea',
       state: 'Wales',
-      postal_code: 'SA1 1DA',
-      country: 'GB',
+      postal_code: '20126',
+      country: 'IT',
       shipper_number: ENV['UPS_ACCOUNT_NUMBER']
     }
   end
 
   def ship_to
+    {
+      company_name: 'Google Inc.',
+      attention_name: 'Sergie Bryn',
+      phone_number: '0207 031 3000',
+      address_line_1: '1 St Giles High Street',
+      city: 'London',
+      state: 'England',
+      postal_code: 'WC2H 8AG',
+      country: 'GB'
+    }
+  end
+
+  def sold_to
     {
       company_name: 'Google Inc.',
       attention_name: 'Sergie Bryn',
@@ -50,8 +63,8 @@ module ShippingOptions
     {
       invoice_number: '#P-1234',
       invoice_date: '20170816',
-      reason_for_export: '',
-      currency_code: 'USD',
+      reason_for_export: 'SALE',
+      currency_code: 'EUR',
       products: [
         {
           description: 'White coffee mug',
@@ -59,7 +72,6 @@ module ShippingOptions
           value: '14.02',
           dimensions_unit: 'CM',
           part_number: 'MUG-01-WHITE',
-          commodity_code: '1234',
           origin_country_code: 'US'
         },
         {
@@ -68,7 +80,6 @@ module ShippingOptions
           value: '14.05',
           dimensions_unit: 'CM',
           part_number: 'MUG-01-RED',
-          commodity_code: '5678',
           origin_country_code: 'US'
         }
       ]

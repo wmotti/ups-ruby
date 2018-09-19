@@ -3,26 +3,9 @@ require 'spec_helper'
 describe UPS::Connection do
   include ShippingOptions
 
-  before do
-    Excon.defaults[:mock] = true
-  end
-
-  after do
-    Excon.stubs.clear
-  end
-
-  let(:stub_path) { File.expand_path("../../../stubs", __FILE__) }
   let(:server) { UPS::Connection.new(test_mode: true) }
 
   describe "if requesting rates" do
-    before do
-      Excon.stub({:method => :post}) do |params|
-        case params[:path]
-        when UPS::Connection::RATE_PATH
-          {body: File.read("#{stub_path}/rates_negotiated_success.xml"), status: 200}
-        end
-      end
-    end
 
     subject do
       server.rates do |rate_builder|
@@ -37,33 +20,34 @@ describe UPS::Connection do
 
     it "should return neotiated rates" do
       expect(subject.rated_shipments).wont_be_empty
-      expect(subject.rated_shipments).must_equal [
+      subject.rated_shipments.each {|s| s[:total] = :variable}
+      expect(subject.rated_shipments.sort_by {|s| s[:service_code]}).must_equal [
         {
           :service_code=>"11",
           :service_name=>"UPS Standard",
           :warnings=>["Your invoice may vary from the displayed reference rates"],
-          :total=>"24.78"
+          :total=>:variable
 
         },
         {
           :service_code=>"65",
           :service_name=>"UPS Saver",
           :warnings=>["Your invoice may vary from the displayed reference rates"],
-          :total=>"45.15"
+          :total=>:variable
         },
         {
           :service_code=>"54",
           :service_name=>"Express Plus",
           :warnings=>["Your invoice may vary from the displayed reference rates"],
-          :total=>"80.89"
+          :total=>:variable
         },
         {
           :service_code=>"07",
           :service_name=>"Express",
           :warnings=>["Your invoice may vary from the displayed reference rates"],
-          :total=>"47.08"
+          :total=>:variable
         }
-      ]
+      ].sort_by {|s| s[:service_code]}
     end
   end
 end
