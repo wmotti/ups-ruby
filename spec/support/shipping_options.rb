@@ -1,5 +1,32 @@
 module ShippingOptions
-  def shipper
+  def us_shipper(account_number)
+    {
+      company_name: 'company name',
+      attention_name: 'attention name',
+      phone_number: '01792 123456',
+      address_line_1: '643 E 97th St',
+      city: 'Cleveland',
+      state: 'OH',
+      postal_code: '44108-1209',
+      country: 'US',
+      shipper_number: account_number
+    }
+  end
+
+  def us_ship_to(account_number)
+    {
+      company_name: 'company name',
+      attention_name: 'attention name',
+      phone_number: '01792 123456',
+      address_line_1: '643 E 97th St',
+      city: 'Cleveland',
+      state: 'OH',
+      postal_code: '44108-1209',
+      country: 'US'
+    }
+  end
+
+  def shipper(account_number)
     {
       company_name: 'Veeqo Limited',
       attention_name: 'Walter White',
@@ -9,7 +36,7 @@ module ShippingOptions
       state: 'Wales',
       postal_code: '20126',
       country: 'IT',
-      shipper_number: ENV['UPS_ACCOUNT_NUMBER']
+      shipper_number: account_number
     }
   end
 
@@ -53,6 +80,19 @@ module ShippingOptions
     }
   end
 
+  def us_package
+    {
+      weight: '0.5',
+      unit: 'LBS',
+      dimensions: {
+        length: 40.0,
+        width: 30.0,
+        height: 20.0,
+        unit: 'IN'
+      }
+    }
+  end
+
   def reference_number
     {
       code: 'IK',
@@ -86,6 +126,26 @@ module ShippingOptions
           origin_country_code: 'US'
         }
       ]
+    }
+  end
+
+  def transportation_charges(account_number, billing_actor)
+    {
+      type: :transportation,
+      billing_actor: billing_actor,
+      billing_account_number: account_number,
+      billing_postal_code: '20126',
+      billing_country_code: 'IT'
+    }
+  end
+
+  def duties_and_taxes_charges(account_number, billing_actor)
+    {
+      type: :duties_and_taxes,
+      billing_actor: billing_actor,
+      billing_account_number: account_number,
+      billing_postal_code: '20126',
+      billing_country_code: 'IT'
     }
   end
 end

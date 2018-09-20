@@ -39,7 +39,7 @@ module UPS
         end
       end
 
-        def shipment_charges
+      def shipment_charges
         opts[:shipment_charges].map do |charge_opts|
           shipment_charge_container(charge_opts)
         end
