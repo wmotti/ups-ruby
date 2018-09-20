@@ -7,3 +7,7 @@ group :development, :test do
   gem 'minitest'
   gem 'nokogiri'
 end
+
+group :test do
+  gem 'dotenv'
+end

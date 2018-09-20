@@ -22,7 +22,8 @@ module ShippingOptions
       city: 'London',
       state: 'England',
       postal_code: 'WC2H 8AG',
-      country: 'GB'
+      country: 'GB',
+      email_address: 'sergie.bryn@google.com'
     }
   end
 
@@ -72,6 +73,7 @@ module ShippingOptions
           value: '14.02',
           dimensions_unit: 'CM',
           part_number: 'MUG-01-WHITE',
+          commodity_code: '1234567890',
           origin_country_code: 'US'
         },
         {
@@ -80,6 +82,7 @@ module ShippingOptions
           value: '14.05',
           dimensions_unit: 'CM',
           part_number: 'MUG-01-RED',
+          commodity_code: '1234567890',
           origin_country_code: 'US'
         }
       ]
