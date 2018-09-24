@@ -21,7 +21,7 @@ describe UPS::Connection do
         shipment_builder.add_payment_information @account_number
         shipment_builder.add_service '07'
         shipment_builder.add_description 'Description'
-        shipment_builder.add_international_invoice invoice_form
+        shipment_builder.add_shipment_service_options(international_invoice: invoice_form)
       end
     end
 
