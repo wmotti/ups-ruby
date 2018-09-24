@@ -153,16 +153,10 @@ module UPS
 
       # Adds a PaymentInformation section to the XML document being built
       #
-      # @param [String] ship_number The UPS Shipper Number
+      # @param [Hash] opts A Hash of data to build the requested section
       # @return [void]
-      def add_payment_information(ship_number)
-        shipment_root << Element.new('PaymentInformation').tap do |payment|
-          payment << Element.new('Prepaid').tap do |prepaid|
-            prepaid << Element.new('BillShipper').tap do |bill_shipper|
-              bill_shipper << element_with_value('AccountNumber', ship_number)
-            end
-          end
-        end
+      def add_payment_information(opts={})
+        shipment_root << PaymentInformationBuilder.new('PaymentInformation', opts).to_xml
       end
 
       # DEPRRECATED
