@@ -1,5 +1,5 @@
 module ShippingOptions
-  def shipper
+  def shipper(account_number)
     {
       company_name: 'Veeqo Limited',
       attention_name: 'Walter White',
@@ -9,7 +9,7 @@ module ShippingOptions
       state: 'Wales',
       postal_code: '20126',
       country: 'IT',
-      shipper_number: ENV['UPS_ACCOUNT_NUMBER']
+      shipper_number: account_number
     }
   end
 

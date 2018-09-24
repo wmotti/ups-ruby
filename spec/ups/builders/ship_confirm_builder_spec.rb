@@ -7,9 +7,9 @@ class UPS::Builders::TestShipConfirmBuilder < Minitest::Test
   def setup
     @ship_confirm_builder = UPS::Builders::ShipConfirmBuilder.new do |builder|
       builder.add_access_request ENV['UPS_LICENSE_NUMBER'], ENV['UPS_USER_ID'], ENV['UPS_PASSWORD']
-      builder.add_shipper shipper
+      builder.add_shipper shipper(ENV['UPS_IT_ACCOUNT_NUMBER'])
       builder.add_ship_to ship_to
-      builder.add_ship_from shipper
+      builder.add_ship_from shipper(ENV['UPS_IT_ACCOUNT_NUMBER'])
       builder.add_package package
       builder.add_label_specification 'gif', { height: '100', width: '100' }
       builder.add_shipment_service_options({international_invoice: invoice_form})

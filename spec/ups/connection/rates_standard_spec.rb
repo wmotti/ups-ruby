@@ -11,8 +11,8 @@ describe UPS::Connection do
     subject do
       server.rates do |rate_builder|
         rate_builder.add_access_request ENV['UPS_LICENSE_NUMBER'], ENV['UPS_USER_ID'], ENV['UPS_PASSWORD']
-        rate_builder.add_shipper shipper
-        rate_builder.add_ship_from shipper
+        rate_builder.add_shipper shipper(ENV['UPS_IT_ACCOUNT_NUMBER'])
+        rate_builder.add_ship_from shipper(ENV['UPS_IT_ACCOUNT_NUMBER'])
         rate_builder.add_ship_to ship_to
         rate_builder.add_package package
       end
