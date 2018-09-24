@@ -195,7 +195,7 @@ module UPS
       end
 
       def packaging_type(packaging_desc)
-        code_description 'PackagingType', UPS::Data::PACKAGING.fetch(packaging_desc), packaging_desc
+        code_description 'PackagingType', UPS::Data::PACKAGINGS.fetch(packaging_desc), packaging_desc
       end
 
       def package_weight(weight, unit)
