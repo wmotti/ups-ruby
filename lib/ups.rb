@@ -31,5 +31,6 @@ module UPS
     autoload :ShipAcceptBuilder,                  'ups/builders/ship_accept_builder'
     autoload :OrganisationBuilder,                'ups/builders/organisation_builder'
     autoload :ShipperBuilder,                     'ups/builders/shipper_builder'
+    autoload :PaymentInformationBuilder,          'ups/builders/payment_information_builder'
   end
 end

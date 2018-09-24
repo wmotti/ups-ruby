@@ -1,4 +1,31 @@
 module ShippingOptions
+  def us_shipper(account_number)
+    {
+      company_name: 'company name',
+      attention_name: 'attention name',
+      phone_number: '01792 123456',
+      address_line_1: '643 E 97th St',
+      city: 'Cleveland',
+      state: 'OH',
+      postal_code: '44108-1209',
+      country: 'US',
+      shipper_number: account_number
+    }
+  end
+
+  def us_ship_to(account_number)
+    {
+      company_name: 'company name',
+      attention_name: 'attention name',
+      phone_number: '01792 123456',
+      address_line_1: '643 E 97th St',
+      city: 'Cleveland',
+      state: 'OH',
+      postal_code: '44108-1209',
+      country: 'US'
+    }
+  end
+
   def shipper(account_number)
     {
       company_name: 'Veeqo Limited',
@@ -49,6 +76,19 @@ module ShippingOptions
         width: 30.0,
         height: 20.0,
         unit: 'CM'
+      }
+    }
+  end
+
+  def us_package
+    {
+      weight: '0.5',
+      unit: 'LBS',
+      dimensions: {
+        length: 40.0,
+        width: 30.0,
+        height: 20.0,
+        unit: 'IN'
       }
     }
   end
