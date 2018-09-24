@@ -1,14 +1,12 @@
+require 'dotenv/load'
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  track_files 'lib/**/*.rb'
+  add_filter ['lib/ups-ruby.rb', 'lib/ups/version.rb']
+end
 
 path = File.expand_path('../../', __FILE__)
 require "#{path}/lib/ups.rb"
-
-# Set default env parameters to prevent CI failing on pull requests
-ENV['UPS_LICENSE_NUMBER'] = '' unless ENV.key? 'UPS_LICENSE_NUMBER'
-ENV['UPS_USER_ID'] = '' unless ENV.key? 'UPS_USER_ID'
-ENV['UPS_PASSWORD'] = '' unless ENV.key? 'UPS_PASSWORD'
-ENV['UPS_ACCOUNT_NUMBER'] = '' unless ENV.key? 'UPS_ACCOUNT_NUMBER'
 
 require 'nokogiri'
 require 'minitest/autorun'
