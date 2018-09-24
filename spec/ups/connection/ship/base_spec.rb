@@ -21,8 +21,6 @@ describe UPS::Connection do
         shipment_builder.add_payment_information @account_number
         shipment_builder.add_service '07'
         shipment_builder.add_description 'Description'
-        shipment_builder.add_international_invoice invoice_form
-        #puts shipment_builder.to_xml
       end
     end
 
@@ -39,11 +37,6 @@ describe UPS::Connection do
       subject.graphic_image.must_be_kind_of File
       subject.html_image.must_be_kind_of File
       subject.graphic_extension.must_equal '.gif'
-    end
-
-    it "should return the requested customs form data" do
-      subject.form_graphic_image.must_be_kind_of File
-      subject.form_graphic_extension.must_equal '.pdf'
     end
 
     it "should return the tracking number" do
