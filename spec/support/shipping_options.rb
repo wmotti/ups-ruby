@@ -1,5 +1,4 @@
 module ShippingOptions
-
   def shipper(account_number)
     {
       company_name: 'Veeqo Limited',
