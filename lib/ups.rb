@@ -1,6 +1,5 @@
 module UPS
   autoload :SERVICES,              'ups/services'
-  autoload :PACKAGING,             'ups/packaging'
 
   autoload :Version,               'ups/version'
   autoload :Connection,            'ups/connection'
@@ -12,6 +11,7 @@ module UPS
     autoload :CANADIAN_STATES,     'ups/data/canadian_states'
     autoload :IE_COUNTIES,         'ups/data/ie_counties'
     autoload :IE_COUNTY_PREFIXES,  'ups/data/ie_county_prefixes'
+    autoload :PACKAGING,           'ups/data/packagings'
   end
 
   module Parsers
