@@ -55,7 +55,7 @@ module ShippingOptions
 
   def reference_number
     {
-      code: 'IK',
+      code: 'Invoice Number',
       value: '1234567890'
     }
   end
