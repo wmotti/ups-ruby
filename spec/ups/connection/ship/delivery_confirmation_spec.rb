@@ -7,7 +7,7 @@ describe UPS::Connection do
 
   let(:server) { UPS::Connection.new(test_mode: true) }
 
-  describe "if requesting a shipment" do
+  describe "if requesting a shipment with delivery confirmation" do
 
     subject do
       server.ship do |shipment_builder|
@@ -21,7 +21,7 @@ describe UPS::Connection do
         shipment_builder.add_payment_information @account_number
         shipment_builder.add_service '07'
         shipment_builder.add_description 'Description'
-        shipment_builder.add_shipment_service_options({international_invoice: invoice_form})
+        shipment_builder.add_shipment_service_options(delivery_confirmation: {type: 'signature required'})
       end
     end
 
@@ -40,13 +40,8 @@ describe UPS::Connection do
       subject.graphic_extension.must_equal '.gif'
     end
 
-    it "should return the requested customs form data" do
-      subject.form_graphic_image.must_be_kind_of File
-      subject.form_graphic_extension.must_equal '.pdf'
-    end
-
     it "should return the tracking number" do
-      subject.tracking_number.must_match(/1Z#{@account_number}\d{10}/)
+      subject.tracking_number.must_match(/1Z#{@account_number}D\d{9}/)
     end
   end
 end
