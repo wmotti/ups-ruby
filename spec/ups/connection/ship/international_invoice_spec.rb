@@ -18,7 +18,7 @@ describe UPS::Connection do
         shipment_builder.add_ship_to ship_to
         shipment_builder.add_sold_to sold_to
         shipment_builder.add_package package
-        shipment_builder.add_payment_information @account_number
+        shipment_builder.add_payment_information(billing_actor: :shipper, billing_account_number: @account_number)
         shipment_builder.add_service '07'
         shipment_builder.add_description 'Description'
         shipment_builder.add_international_invoice invoice_form
