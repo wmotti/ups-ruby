@@ -159,24 +159,6 @@ module UPS
         shipment_root << PaymentInformationBuilder.new('PaymentInformation', opts).to_xml
       end
 
-      # DEPRRECATED
-      def add_free_domicile_payment_information(ship_number)
-        shipment_root << Element.new('ItemizedPaymentInformation').tap do |payment|
-          payment << Element.new('ShipmentCharge').tap do |shipment_charge|
-            shipment_charge << element_with_value('Type', '01')
-            shipment_charge << Element.new('BillShipper').tap do |bill_shipper|
-              bill_shipper << element_with_value('AccountNumber', ship_number)
-            end
-          end
-          payment << Element.new('ShipmentCharge').tap do |shipment_charge|
-            shipment_charge << element_with_value('Type', '02')
-            shipment_charge << Element.new('BillShipper').tap do |bill_shipper|
-              bill_shipper << element_with_value('AccountNumber', ship_number)
-            end
-          end
-        end
-      end
-
       # Adds a ItemizedPaymentInformation section to the XML document being built
       #
       # @param [String] opts A Hash of data to build the requested section<Paste>
