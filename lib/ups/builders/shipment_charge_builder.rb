@@ -42,6 +42,10 @@ module UPS
           when :receiver
             Element.new('BillReceiver').tap do |bill_receiver|
               bill_receiver << element_with_value('AccountNumber', opts[:billing_account_number])
+              bill_receiver << Element.new('Address').tap do |address|
+                address << element_with_value('PostalCode', opts[:billing_postal_code]) if opts[:billing_postal_code]
+                address << element_with_value('CountryCode', opts[:billing_country_code])
+              end
             end
           when :third_party_shipper, :third_party_consignee
             Element.new('BillThirdParty').tap do |bill_third_party|

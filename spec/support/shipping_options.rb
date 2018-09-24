@@ -128,4 +128,24 @@ module ShippingOptions
       ]
     }
   end
+
+  def transportation_charges(account_number, billing_actor)
+    {
+      type: :transportation,
+      billing_actor: billing_actor,
+      billing_account_number: account_number,
+      billing_postal_code: '20126',
+      billing_country_code: 'IT'
+    }
+  end
+
+  def duties_and_taxes_charges(account_number, billing_actor)
+    {
+      type: :duties_and_taxes,
+      billing_actor: billing_actor,
+      billing_account_number: account_number,
+      billing_postal_code: '20126',
+      billing_country_code: 'IT'
+    }
+  end
 end
