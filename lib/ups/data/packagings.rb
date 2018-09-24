@@ -1,6 +1,6 @@
 module UPS
   module Data
-    PACKAGING = {
+    PACKAGINGS = {
       'UPS Letter'                => '01',
       'Customer Supplied Package' => '02',
       'Tube'                      => '03',
