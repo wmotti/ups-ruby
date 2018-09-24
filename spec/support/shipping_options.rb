@@ -83,6 +83,7 @@ module ShippingOptions
 
   def us_package
     {
+      packaging: 'Customer Supplied Package',
       weight: '0.5',
       unit: 'LBS',
       dimensions: {
