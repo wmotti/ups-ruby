@@ -1,6 +1,5 @@
 module UPS
   autoload :SERVICES,              'ups/services'
-  autoload :PACKAGING,             'ups/packaging'
 
   autoload :Version,               'ups/version'
   autoload :Connection,            'ups/connection'
@@ -8,6 +7,7 @@ module UPS
 
   autoload :Data,                  'ups/data'
   module Data
+<<<<<<< HEAD
     autoload :US_STATES,                 'ups/data/us_states'
     autoload :CANADIAN_STATES,           'ups/data/canadian_states'
     autoload :IE_COUNTIES,               'ups/data/ie_counties'
@@ -21,6 +21,7 @@ module UPS
     autoload :PR_SERVICE_CODES,          'ups/data/service_codes'
     autoload :OTHERS_SERVICE_CODES,      'ups/data/service_codes'
     autoload :ALL_SERVICE_CODES,         'ups/data/service_codes'
+    autoload :PACKAGING,                 'ups/data/packagings'
   end
 
   module Parsers

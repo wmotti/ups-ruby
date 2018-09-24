@@ -69,6 +69,7 @@ module ShippingOptions
 
   def package
     {
+      packaging: 'Customer Supplied Package',
       weight: '0.5',
       unit: 'KGS',
       dimensions: {

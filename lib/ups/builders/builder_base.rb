@@ -144,7 +144,7 @@ module UPS
       # @return [void]
       def add_package(opts = {})
         shipment_root << Element.new('Package').tap do |org|
-          org << packaging_type
+          org << packaging_type(opts[:packaging])
           org << element_with_value('Description', 'Rate')
           org << package_weight(opts[:weight], opts[:unit])
           org << package_dimensions(opts[:dimensions]) if opts[:dimensions]
@@ -194,8 +194,8 @@ module UPS
         root << shipment_root
       end
 
-      def packaging_type
-        code_description 'PackagingType', '02', 'Customer Supplied'
+      def packaging_type(packaging_desc)
+        code_description 'PackagingType', UPS::Data::PACKAGING.fetch(packaging_desc), packaging_desc
       end
 
       def package_weight(weight, unit)
