@@ -20,7 +20,7 @@ describe UPS::Connection do
         shipment_builder.add_sold_to sold_to
         shipment_builder.add_package package
         shipment_builder.add_payment_information(billing_actor: :shipper, billing_account_number: @account_number)
-        shipment_builder.add_service shipper[:country], ship_to[:country], 'Express'
+        shipment_builder.add_service shipper[:country], ship_to[:country], 'Worldwide Saver'
         shipment_builder.add_description 'Description'
       end
     end

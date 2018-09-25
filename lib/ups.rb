@@ -21,6 +21,7 @@ module UPS
     autoload :OTHERS_SERVICE_CODES,      'ups/data/service_codes'
     autoload :ALL_SERVICE_CODES,         'ups/data/service_codes'
     autoload :PACKAGINGS,                'ups/data/packagings'
+    autoload :EU_COUNTRIES,              'ups/data/eu_countries'
   end
 
   module Parsers

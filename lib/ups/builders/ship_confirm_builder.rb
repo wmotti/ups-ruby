@@ -62,12 +62,14 @@ module UPS
       #   choosen Shipping Method
       # @return [void]
       def add_service(origin, destination, service)
-        shipment_root << code_description('Service',
-                                          service_code(origin, destination, service),
-                                          service)
+        service_code = service_code(origin, destination, service)
+        shipment_root << code_description('Service', service_code, service)
       end
 
       def service_code(origin, destination, service)
+        if ! %w[US CA EU MX PL PR].include?(origin) && UPS::Data::EU_COUNTRIES.has_key?(origin)
+          origin = 'EU'
+        end
         case origin
         when 'US'
           UPS::Data::US_SERVICE_CODES
