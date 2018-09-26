@@ -1,11 +1,10 @@
 module UPS
-  autoload :SERVICES,              'ups/services'
+  autoload :SERVICES,                 'ups/services'
+  autoload :Version,                  'ups/version'
+  autoload :Connection,               'ups/connection'
+  autoload :Exceptions,               'ups/exceptions'
 
-  autoload :Version,               'ups/version'
-  autoload :Connection,            'ups/connection'
-  autoload :Exceptions,            'ups/exceptions'
-
-  autoload :Data,                  'ups/data'
+  autoload :Data,                     'ups/data'
   module Data
     autoload :US_STATES,                 'ups/data/us_states'
     autoload :CANADIAN_STATES,           'ups/data/canadian_states'
@@ -22,13 +21,14 @@ module UPS
     autoload :ALL_SERVICE_CODES,         'ups/data/service_codes'
     autoload :PACKAGINGS,                'ups/data/packagings'
     autoload :EU_COUNTRIES,              'ups/data/eu_countries'
+    autoload :REFERENCE_NUMBER_CODES,    'ups/data/reference_number_codes'
   end
 
   module Parsers
-    autoload :ParserBase,          'ups/parsers/parser_base'
-    autoload :RatesParser,         'ups/parsers/rates_parser'
-    autoload :ShipConfirmParser,   'ups/parsers/ship_confirm_parser'
-    autoload :ShipAcceptParser,    'ups/parsers/ship_accept_parser'
+    autoload :ParserBase,             'ups/parsers/parser_base'
+    autoload :RatesParser,            'ups/parsers/rates_parser'
+    autoload :ShipConfirmParser,      'ups/parsers/ship_confirm_parser'
+    autoload :ShipAcceptParser,       'ups/parsers/ship_accept_parser'
   end
 
   module Builders
