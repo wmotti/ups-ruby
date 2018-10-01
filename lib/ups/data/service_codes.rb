@@ -96,5 +96,17 @@ module UPS
       'Economy Mail Innovations' => 'M6',
       'Worldwide Express Freight Mid-day' => '71',
     }.insensitive
+
+    SERVICES = [
+      US_SERVICE_CODES,
+      CA_SERVICE_CODES,
+      CA_DOMESTIC_SERVICE_CODES,
+      EU_SERVICE_CODES,
+      MX_SERVICE_CODES,
+      PL_SERVICE_CODES,
+      PR_SERVICE_CODES,
+      OTHERS_SERVICE_CODES,
+      ALL_SERVICE_CODES
+    ].map(&:keys).flatten.uniq
   end
 end
