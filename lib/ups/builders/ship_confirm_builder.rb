@@ -89,7 +89,9 @@ module UPS
           UPS::Data::PR_SERVICE_CODES
         else
           UPS::Data::OTHERS_SERVICE_CODES
-        end.merge!(UPS::Data::ALL_SERVICE_CODES).fetch service
+        end.merge!(UPS::Data::ALL_SERVICE_CODES).fetch service do
+          raise UPS::Exceptions::UnavailableServiceException.new "Unavailable service #{service} from #{origin} to #{destination}"
+        end
       end
 
       # Adds a ReturnService section to the XML document being built
