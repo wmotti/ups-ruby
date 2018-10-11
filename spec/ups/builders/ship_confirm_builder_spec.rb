@@ -21,7 +21,7 @@ class UPS::Builders::TestShipConfirmBuilder < Minitest::Test
   end
 
   def test_raises_an_exception_for_invalid_service
-    ship_confirm_builder = UPS::Builders::ShipConfirmBuilder.new do |builder|
+    UPS::Builders::ShipConfirmBuilder.new do |builder|
       assert_raises(UPS::Exceptions::UnavailableServiceException) do
         builder.add_service 'IT', 'RU', 'Next Day Air Early'
       end

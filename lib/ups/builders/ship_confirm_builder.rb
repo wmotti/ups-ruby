@@ -90,7 +90,7 @@ module UPS
         else
           UPS::Data::OTHERS_SERVICE_CODES
         end.merge!(UPS::Data::ALL_SERVICE_CODES).fetch service do
-          raise UPS::Exceptions::UnavailableServiceException.new "Unavailable service #{service} from #{origin} to #{destination}"
+          raise UPS::Exceptions::UnavailableServiceException.new 'The requested service is unavailable between the selected locations'
         end
       end
 
