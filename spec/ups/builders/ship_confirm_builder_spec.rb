@@ -4,8 +4,8 @@ class UPS::Builders::TestShipConfirmBuilder < Minitest::Test
   include SchemaPath
   include ShippingOptions
 
-  def setup
-    @ship_confirm_builder = UPS::Builders::ShipConfirmBuilder.new do |builder|
+  def test_validates_against_xsd
+    ship_confirm_builder = UPS::Builders::ShipConfirmBuilder.new do |builder|
       builder.add_access_request ENV['UPS_LICENSE_NUMBER'], ENV['UPS_USER_ID'], ENV['UPS_PASSWORD']
       builder.add_shipper shipper(ENV['UPS_IT_ACCOUNT_NUMBER'])
       builder.add_ship_to ship_to
@@ -17,9 +17,14 @@ class UPS::Builders::TestShipConfirmBuilder < Minitest::Test
       builder.add_reference_number reference_number
       builder.add_insurance_charge '5.00'
     end
+    assert_passes_validation schema_path('ShipConfirmRequest.xsd'), ship_confirm_builder.to_xml
   end
 
-  def test_validates_against_xsd
-    assert_passes_validation schema_path('ShipConfirmRequest.xsd'), @ship_confirm_builder.to_xml
+  def test_raises_an_exception_for_invalid_service
+    ship_confirm_builder = UPS::Builders::ShipConfirmBuilder.new do |builder|
+      assert_raises(UPS::Exceptions::UnavailableServiceException) do
+        builder.add_service 'IT', 'RU', 'Next Day Air Early'
+      end
+    end
   end
 end
