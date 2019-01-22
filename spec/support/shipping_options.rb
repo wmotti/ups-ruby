@@ -81,6 +81,13 @@ module ShippingOptions
     }
   end
 
+  def reference_number
+    {
+      code: 'Invoice Number',
+      value: '1234567890'
+    }
+  end
+
   def us_package
     {
       packaging: 'Customer Supplied Package',
@@ -91,14 +98,9 @@ module ShippingOptions
         width: 30.0,
         height: 20.0,
         unit: 'IN'
-      }
-    }
-  end
-
-  def reference_number
-    {
-      code: 'Invoice Number',
-      value: '1234567890'
+      },
+      reference_n_1: reference_number,
+      reference_n_2: reference_number
     }
   end
 
