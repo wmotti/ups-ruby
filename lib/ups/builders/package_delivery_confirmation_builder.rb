@@ -2,13 +2,13 @@ require 'ox'
 
 module UPS
   module Builders
-    # The {DeliveryConfirmationBuilder} class builds UPS XML Delivery Confirmation Objects.
+    # The {PackageDeliveryConfirmationBuilder} class builds UPS XML Delivery Confirmation Objects.
     #
     # @author Walter Mottinelli
     # @since 0.9.7
     # @attr [String] name The Containing XML Element Name
     # @attr [Hash] opts The delivery confirmation parts
-    class DeliveryConfirmationBuilder < BuilderBase
+    class PackageDeliveryConfirmationBuilder < BuilderBase
       include Ox
 
       attr_accessor :name, :opts
@@ -20,8 +20,9 @@ module UPS
 
       def dcis_type(type)
         type_code = {
-          'signature required'       => '1',
-          'adult signature required' => '2'
+          'delivery confirmation'    => '1',
+          'signature required'       => '2',
+          'adult signature required' => '3'
         }.fetch type
         element_with_value 'DCISType', type_code
       end

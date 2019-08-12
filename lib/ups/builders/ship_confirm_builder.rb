@@ -39,7 +39,7 @@ module UPS
       def add_shipment_service_options(opts = {})
         shipment_root << Element.new('ShipmentServiceOptions').tap do |shipment_service_options|
           shipment_service_options << InternationalInvoiceBuilder.new('InternationalForms', opts[:international_invoice]).to_xml if opts[:international_invoice]
-          shipment_service_options << DeliveryConfirmationBuilder.new('DeliveryConfirmation', opts[:delivery_confirmation]).to_xml if opts[:delivery_confirmation]
+          shipment_service_options << ShipmentDeliveryConfirmationBuilder.new('DeliveryConfirmation', opts[:delivery_confirmation]).to_xml if opts[:delivery_confirmation]
         end
       end
 

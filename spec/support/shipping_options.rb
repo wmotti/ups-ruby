@@ -13,6 +13,20 @@ module ShippingOptions
     }
   end
 
+  def shipper_US(account_number)
+    {
+      company_name: 'Veeqo Limited',
+      attention_name: 'Walter White',
+      phone_number: '01792 123456',
+      address_line_1: '11 Wind Street',
+      city: 'New York',
+      state: 'NY',
+      postal_code: '10007',
+      country: 'US',
+      shipper_number: account_number
+    }
+  end
+
   def ship_to
     {
       company_name: 'Google Inc.',
@@ -23,6 +37,20 @@ module ShippingOptions
       state: 'England',
       postal_code: 'WC2H 8AG',
       country: 'GB',
+      email_address: 'sergie.bryn@google.com'
+    }
+  end
+
+  def ship_to_US
+    {
+      company_name: 'Google Inc.',
+      attention_name: 'Sergie Bryn',
+      phone_number: '0207 031 3000',
+      address_line_1: '777 Brockton Avenue',
+      city: 'New York',
+      state: 'NY',
+      postal_code: '10007',
+      country: 'US',
       email_address: 'sergie.bryn@google.com'
     }
   end
@@ -40,6 +68,19 @@ module ShippingOptions
     }
   end
 
+  def sold_to_US
+    {
+      company_name: 'Google Inc.',
+      attention_name: 'Sergie Bryn',
+      phone_number: '0207 031 3000',
+      address_line_1: '1 St Giles High Street',
+      city: 'New York',
+      state: 'NY',
+      postal_code: '10007',
+      country: 'US'
+    }
+  end
+
   def package
     {
       weight: '0.5',
@@ -49,6 +90,22 @@ module ShippingOptions
         width: 30.0,
         height: 20.0,
         unit: 'CM'
+      }
+    }
+  end
+
+  def package_with_delivery_confirmation
+    {
+      weight: '0.5',
+      unit: 'LBS',
+      dimensions: {
+        length: 40.0,
+        width: 30.0,
+        height: 20.0,
+        unit: 'IN'
+      },
+      delivery_confirmation: {
+        type: 'signature required'
       }
     }
   end

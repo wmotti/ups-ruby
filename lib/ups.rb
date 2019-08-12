@@ -22,15 +22,16 @@ module UPS
   end
 
   module Builders
-    autoload :BuilderBase,                        'ups/builders/builder_base'
-    autoload :RateBuilder,                        'ups/builders/rate_builder'
-    autoload :AddressBuilder,                     'ups/builders/address_builder'
-    autoload :ShipConfirmBuilder,                 'ups/builders/ship_confirm_builder'
-    autoload :InternationalInvoiceBuilder,        'ups/builders/international_invoice_builder'
-    autoload :InternationalInvoiceProductBuilder, 'ups/builders/international_invoice_product_builder'
-    autoload :ShipAcceptBuilder,                  'ups/builders/ship_accept_builder'
-    autoload :OrganisationBuilder,                'ups/builders/organisation_builder'
-    autoload :ShipperBuilder,                     'ups/builders/shipper_builder'
-    autoload :DeliveryConfirmationBuilder,        'ups/builders/delivery_confirmation_builder'
+    autoload :BuilderBase,                         'ups/builders/builder_base'
+    autoload :RateBuilder,                         'ups/builders/rate_builder'
+    autoload :AddressBuilder,                      'ups/builders/address_builder'
+    autoload :ShipConfirmBuilder,                  'ups/builders/ship_confirm_builder'
+    autoload :InternationalInvoiceBuilder,         'ups/builders/international_invoice_builder'
+    autoload :InternationalInvoiceProductBuilder,  'ups/builders/international_invoice_product_builder'
+    autoload :ShipAcceptBuilder,                   'ups/builders/ship_accept_builder'
+    autoload :OrganisationBuilder,                 'ups/builders/organisation_builder'
+    autoload :ShipperBuilder,                      'ups/builders/shipper_builder'
+    autoload :ShipmentDeliveryConfirmationBuilder, 'ups/builders/shipment_delivery_confirmation_builder'
+    autoload :PackageDeliveryConfirmationBuilder,  'ups/builders/package_delivery_confirmation_builder'
   end
 end

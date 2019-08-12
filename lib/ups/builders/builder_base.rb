@@ -148,6 +148,9 @@ module UPS
           org << element_with_value('Description', 'Rate')
           org << package_weight(opts[:weight], opts[:unit])
           org << package_dimensions(opts[:dimensions]) if opts[:dimensions]
+          org << Element.new('PackageServiceOptions').tap do |package_service_options|
+            package_service_options << PackageDeliveryConfirmationBuilder.new('DeliveryConfirmation', opts[:delivery_confirmation]).to_xml
+          end if opts[:delivery_confirmation]
         end
       end
 
