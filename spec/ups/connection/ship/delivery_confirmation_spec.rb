@@ -59,7 +59,6 @@ describe UPS::Connection do
         shipment_builder.add_payment_information @account_number
         shipment_builder.add_service '03'
         shipment_builder.add_description 'Description'
-        p shipment_builder.to_xml
       end
     end
 
