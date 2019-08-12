@@ -60,7 +60,6 @@ describe UPS::Connection do
         shipment_builder.add_payment_information(billing_actor: :shipper, billing_account_number: @account_number)
         shipment_builder.add_service shipper_US(@account_number)[:country], ship_to_US[:country], 'Ground'
         shipment_builder.add_description 'Description'
-        p shipment_builder.to_xml
       end
     end
 
