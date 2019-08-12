@@ -148,10 +148,14 @@ module UPS
           org << element_with_value('Description', 'Rate')
           org << package_weight(opts[:weight], opts[:unit])
           org << package_dimensions(opts[:dimensions]) if opts[:dimensions]
-          %i[reference_n_1 reference_n_2].each do |ref_num_type|                                                                                                                                                                                                           if ref_num_opts = opts[ref_num_type]
+          %i[reference_n_1 reference_n_2].each do |ref_num_type|
+            if ref_num_opts = opts[ref_num_type]
               org << reference_number(ref_num_opts[:code], ref_num_opts[:value])
             end
           end
+          org << Element.new('PackageServiceOptions').tap do |package_service_options|
+            package_service_options << PackageDeliveryConfirmationBuilder.new('DeliveryConfirmation', opts[:delivery_confirmation]).to_xml
+          end if opts[:delivery_confirmation]
         end
       end
 

@@ -49,7 +49,7 @@ module UPS
             end
           end
           if opts[:delivery_confirmation]
-            shipment_service_options << DeliveryConfirmationBuilder.new('DeliveryConfirmation', opts[:delivery_confirmation]).to_xml
+            shipment_service_options << ShipmentDeliveryConfirmationBuilder.new('DeliveryConfirmation', opts[:delivery_confirmation]).to_xml
           end
         end
       end
