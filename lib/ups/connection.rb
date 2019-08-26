@@ -23,7 +23,8 @@ module UPS
     ADDRESS_PATH = '/ups.app/xml/XAV'
 
     DEFAULT_PARAMS = {
-      test_mode: false
+      test_mode: false,
+      logger: false
     }
 
     # Initializes a new {Connection} object
@@ -33,6 +34,7 @@ module UPS
     #   requests to the UPS URL
     def initialize(params = {})
       params = DEFAULT_PARAMS.merge(params)
+      @logger = params[:logger]
       self.url = (params[:test_mode]) ? TEST_URL : LIVE_URL
     end
 
@@ -106,7 +108,10 @@ module UPS
     end
 
     def make_ship_request(builder, path, ship_parser)
+      request  = builder.to_xml
+      @logger.debug(request) if @logger
       response = get_response_stream path, builder.to_xml
+      @logger.debug(response.string) if @logger
       ship_parser.tap do |parser|
         Ox.sax_parse(parser, response)
       end
